@@ -1,0 +1,96 @@
+<HTML>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <TITLE>YNews搜索</TITLE>
+</head>
+<body>
+{% load static %}
+    <body><style type="text/css">
+        body{ background-image:url({% static "bg.jpg" %});background-attachment:fixed }
+    </style></body>
+    <img style="margin-left: 480px;margin-top: 150px" class="pos" src="{% static "icon.png" %}">
+
+<div style="text-align: center">
+<form action="search/result" method="post">
+    <input style="width: 700px;height: 40px;font-size: 20px" type="text" name="keyword">
+    <input style="width: 130px;height: 40px;font-size: 20px;font-family: 'Microsoft JhengHei';background-color: darkseagreen" type="submit" value="搜索">
+    <br>
+    <br>
+    <p style="font-family: 'Microsoft JhengHei';font-size:16px;">★时间过滤： 从
+        <select name="y1">
+            <option value="0"></option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+        </select>
+        年
+        <select name="m1">
+            <option value="0"></option>
+            {% for i in monthlist %}
+                {% if forloop.counter < 10 %}
+                    <option value="0{{ i }}">{{ i }}</option>
+                {% else %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        月
+        <select name="d1">
+            <option value="0"></option>
+            {% for i in daylist %}
+                {% if forloop.counter < 10 %}
+                    <option value="0{{ i }}">{{ i }}</option>
+                {% else %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        日 至
+        <select name="y2">
+            <option value="0"></option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+        </select>
+        年
+        <select name="m2">
+            <option value="0"></option>
+            {% for i in monthlist %}
+                {% if i < 10 %}
+                    <option value="0{{ i }}">{{ i }}</option>
+                {% else %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        月
+        <select name="d2">
+            <option value="0"></option>
+            {% for i in daylist %}
+                {% if i < 10 %}
+                    <option value="0{{ i }}">{{ i }}</option>
+                {% else %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        日
+    </p>
+
+</form>
+</div>
+
+<p style="text-align: center;font-family: 'Microsoft JhengHei';font-size: 20px;"><a href="../1">返回首页</a></p>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<p style="text-align: center;font-family: 'Microsoft JhengHei'">@Even Yin</p>
+
+</body>
+</HTML>

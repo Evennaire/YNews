@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<TITLE>YNews首页</TITLE>
+    <style type="text/css">
+    img.pos{
+        position: relative;
+        left: 20px;
+        top: 10px
+    }
+    p.pos{
+        position: relative;
+        left: 290px;
+        top: -150px;
+    </style>
+</HEAD>
+
+<BODY>
+
+    {% load static %}
+    <body><style type="text/css">
+        body{ background-image:url({% static "bg.jpg" %});background-attachment:fixed }
+    </style></body>
+    <img class="pos" src="{% static "icon.png" %}">
+    <br>
+    <br>
+    <br>
+    <table>
+        <td>
+    <h2 style="margin-left: 20px;color: darkslategrey"><pre>>>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >>  >> </pre></h2>
+    </td>
+        <td>
+    <form action="../search">
+        <input type="submit" value="全站搜索" style="width:120px;height:30px;font-family:'Microsoft JhengHei';font-size:large;margin-top:-8px;background-color:darkseagreen" >
+    </form>
+            </td></table>
+    <p class="pos" style="font-family: 'Microsoft JhengHei';font-size: larger"><b>主页</b></p>
+    <p style="font-family: 'Microsoft JhengHei';margin-left: 30px">新闻总量：{{ newstotal }}  <b> &nbsp;&nbsp;|&nbsp;&nbsp;  </b>总页数：{{ pagelist|length }}</p>
+    <p style="font-family: 'Microsoft JhengHei';margin-left: 30px">第 {{ pagenow }} 页</p>
+    <br>
+    {% for key,value in newsdisplay.items %}
+        <div>
+            <p style="margin-left: 90px"><font color = '#2f4f4f'"> █</font> <a href="newspage/{{ key }}">{{ value.0 }}</a>     {{ value.1 }}</p>
+            <p style="margin-left: 110px;margin-right: 300px">{{ value.2 }}</p>
+            <br>
+        </div>
+    {% endfor %}
+
+<br>
+<br>
+<p style="font-family: 'Microsoft JhengHei';margin-left: 100px">当前在第 {{ pagenow }} 页</p>
+<style type="text/css">
+    .page{
+        text-align: left;
+        margin-left: 100px;
+        margin-right: 200px;
+        line-height:30px;
+    }
+    .page a{
+        color: black;
+    }
+
+</style>
+
+<div class="page">
+        <a href="../1"> 首页</a><font style="margin-left: 0px">  |</font>
+    {% for i in pagelist %}
+        <a href="../{{ i }}">{{ i }}</a> <font style="margin-left: 0px">|</font>
+    {% endfor %}
+        <a href="../{{ pagelist|length }}"> 末页     </a>
+</div>
+<br>
+<br>
+<p style="text-align: center;font-family: 'Microsoft JhengHei'">感谢人民网的大力支持！！</p>
+<p style="text-align: center;font-family: 'Microsoft JhengHei'">@Even Yin</p>
+<br>
+</BODY>
+</HTML>

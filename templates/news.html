@@ -1,0 +1,47 @@
+<head>
+    <TITLE>YNews{{ news_con.0 }}</TITLE>
+</head>
+{% load static %}
+<body><style type="text/css">
+        body{ background-image:url({% static "bg.jpg" %});background-attachment:fixed }
+    </style></body>
+    <img style="margin-left: 30px" class="pos" src="{% static "icon.png" %}">
+<table style="margin-left: 30px">
+<tr>
+<td>
+<form action="../search" docBase="D:">
+    <input style="width:120px;height:30px;font-family:'Microsoft JhengHei';font-size:large;background-color:darkseagreen" type="submit" value="返回搜索页">
+</form>
+</td>
+<td>
+<form action="../">
+    <input style="width:120px;height:30px;font-family:'Microsoft JhengHei';font-size:large;background-color:darkseagreen" type="submit" value="返回首页">
+</form>
+ </td>
+</tr>
+</table>
+<h1 style="margin-left: 40px">{{ news_con.0 }}</h1>
+<h4 style="margin-left: 40px">发布时间：{{ news_con.1 }}</h4>
+<br>
+<style>
+    pre{
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    }
+</style>
+<p><pre style="font-size:18px;margin-left: 100px;margin-right: 100px">{{ news_con.2 }}</pre></p>
+<br>
+<br>
+<p style="font-family: 'Microsoft JhengHei';font-size: 30px;margin-left: 40px; color: darkslategray ">▍ 相关推荐</p>
+{% if recmd|length > 0 %}
+{% for key,value in recmd.items %}
+    <p><a href="/newspage/{{ key }}" style="font-size: 15px;margin-left: 60px">{{ value }}</a></p>
+{% endfor %}
+{% else %}
+    <p style="font-family: 'Microsoft JhengHei';font-size: 15px;margin-left: 60px">无相关推荐</p>
+{% endif %}
+<br>
+<br>
+<p style="text-align: center;font-family: 'Microsoft JhengHei'">感谢人民网的大力支持！！</p>
+<p style="text-align: center;font-family: 'Microsoft JhengHei'">@Even Yin</p>
+<br>
